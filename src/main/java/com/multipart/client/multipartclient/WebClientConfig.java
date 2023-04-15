@@ -14,7 +14,8 @@ public class WebClientConfig {
     @Bean
     TestApi testApi() {
         var webClient = WebClient.builder().baseUrl("http://localhost:8080").build();
-        return HttpServiceProxyFactory.builder().customArgumentResolver(new CustomMultipartResolver(ReactiveAdapterRegistry.getSharedInstance()))
+        return HttpServiceProxyFactory.builder()
+//                .customArgumentResolver(new CustomMultipartResolver(ReactiveAdapterRegistry.getSharedInstance()))
                 .clientAdapter(WebClientAdapter.forClient(webClient)).build().createClient(TestApi.class);
     }
 
